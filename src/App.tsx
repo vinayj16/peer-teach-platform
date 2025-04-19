@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -21,6 +20,7 @@ import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 import Cookies from "./pages/Cookies";
 import ForgotPassword from "./pages/ForgotPassword";
+import UserProfile from "./pages/UserProfile";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +34,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/discover" element={<Discover />} />
           <Route path="/skills/:id" element={<SkillDetail />} />
+          <Route path="/profile/:id" element={<UserProfile />} />
           <Route path="/bookings" element={<Bookings />} />
           <Route path="/messages" element={<Messages />} />
           <Route path="/login" element={<Login />} />

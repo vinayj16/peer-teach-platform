@@ -1,10 +1,10 @@
-
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Star } from "lucide-react";
+import { MessageSquare, Star } from "lucide-react";
 import { Link } from "react-router-dom";
+import { toast } from "sonner";
 
 export interface SkillCardProps {
   id: string;
@@ -30,6 +30,10 @@ const SkillCard = ({
   isVirtual,
   isInPerson,
 }: SkillCardProps) => {
+  const handleMessage = () => {
+    toast.success("Message request sent!");
+  };
+
   return (
     <Card className="overflow-hidden hover:shadow-md transition-shadow h-full flex flex-col">
       <CardHeader className="p-4 pb-2 space-y-2">
@@ -68,9 +72,19 @@ const SkillCard = ({
           <span className="text-xs text-skillswap-neutral">{teacher.name}</span>
         </div>
       </CardContent>
-      <CardFooter className="p-4 pt-2 border-t">
-        <Button className="w-full bg-skillswap-primary hover:bg-skillswap-secondary" asChild>
+      <CardFooter className="p-4 pt-2 border-t flex gap-2">
+        <Button 
+          className="flex-1 bg-skillswap-primary hover:bg-skillswap-secondary transition-colors" 
+          asChild
+        >
           <Link to={`/skills/${id}`}>Learn More</Link>
+        </Button>
+        <Button
+          variant="outline"
+          className="border-skillswap-primary text-skillswap-primary hover:bg-skillswap-light transition-colors"
+          onClick={handleMessage}
+        >
+          <MessageSquare className="h-4 w-4" />
         </Button>
       </CardFooter>
     </Card>

@@ -1,10 +1,10 @@
-
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { MessageSquare, Star } from "lucide-react";
 import { Link } from "react-router-dom";
+import { toast } from "sonner";
 
 export interface ProfileCardProps {
   id: string;
@@ -27,6 +27,10 @@ const ProfileCard = ({
   skillsWanted,
   bio,
 }: ProfileCardProps) => {
+  const handleMessage = () => {
+    toast.success("Message request sent!");
+  };
+
   return (
     <Card className="overflow-hidden hover:shadow-md transition-shadow">
       <CardHeader className="p-6 flex flex-row items-center space-x-4">
@@ -72,10 +76,17 @@ const ProfileCard = ({
         </div>
         
         <div className="flex space-x-3 pt-2">
-          <Button className="flex-1 bg-skillswap-primary hover:bg-skillswap-secondary" asChild>
+          <Button 
+            className="flex-1 bg-skillswap-primary hover:bg-skillswap-secondary transition-colors" 
+            asChild
+          >
             <Link to={`/profile/${id}`}>View Profile</Link>
           </Button>
-          <Button variant="outline" className="flex-1 border-skillswap-primary text-skillswap-primary hover:bg-skillswap-light">
+          <Button 
+            variant="outline" 
+            className="flex-1 border-skillswap-primary text-skillswap-primary hover:bg-skillswap-light transition-colors"
+            onClick={handleMessage}
+          >
             <MessageSquare className="h-4 w-4 mr-2" />
             Message
           </Button>
