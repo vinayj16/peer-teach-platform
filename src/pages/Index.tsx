@@ -11,10 +11,7 @@ import { getSkillsWithTeachers, users } from "@/data/mockData";
 import { Link } from "react-router-dom";
 
 const Index = () => {
-  // Get 4 featured skills
   const featuredSkills = getSkillsWithTeachers().slice(0, 4);
-  
-  // Get 3 featured teachers
   const featuredTeachers = users.slice(0, 3);
   
   return (
@@ -26,12 +23,19 @@ const Index = () => {
         
         <FeatureSection />
         
-        {/* Featured Skills Section */}
-        <section className="py-16 bg-white">
+        {/* Featured Skills Section with improved styling */}
+        <section className="py-16 bg-gradient-to-br from-white to-skillswap-light/20">
           <div className="container mx-auto px-4">
             <div className="flex justify-between items-center mb-8">
-              <h2 className="text-2xl font-bold text-skillswap-dark">Featured Skills</h2>
-              <Button variant="ghost" className="text-skillswap-primary hover:text-skillswap-secondary" asChild>
+              <div>
+                <h2 className="text-3xl font-bold text-skillswap-dark mb-2">Featured Skills</h2>
+                <p className="text-skillswap-neutral text-lg">Discover popular skills in our community</p>
+              </div>
+              <Button 
+                variant="ghost" 
+                className="text-skillswap-primary hover:text-skillswap-secondary hover:bg-skillswap-light/50 transition-all" 
+                asChild
+              >
                 <Link to="/discover">View All Skills</Link>
               </Button>
             </div>
@@ -55,12 +59,19 @@ const Index = () => {
         
         <TestimonialSection />
         
-        {/* Featured Teachers Section */}
-        <section className="py-16 bg-white">
+        {/* Featured Teachers Section with improved styling */}
+        <section className="py-16 bg-gradient-to-br from-skillswap-light/30 to-white">
           <div className="container mx-auto px-4">
             <div className="flex justify-between items-center mb-8">
-              <h2 className="text-2xl font-bold text-skillswap-dark">Meet Our Teachers</h2>
-              <Button variant="ghost" className="text-skillswap-primary hover:text-skillswap-secondary" asChild>
+              <div>
+                <h2 className="text-3xl font-bold text-skillswap-dark mb-2">Meet Our Teachers</h2>
+                <p className="text-skillswap-neutral text-lg">Learn from experienced mentors</p>
+              </div>
+              <Button 
+                variant="ghost" 
+                className="text-skillswap-primary hover:text-skillswap-secondary hover:bg-skillswap-light/50 transition-all" 
+                asChild
+              >
                 <Link to="/teachers">Browse All Teachers</Link>
               </Button>
             </div>
@@ -83,14 +94,18 @@ const Index = () => {
           </div>
         </section>
         
-        {/* CTA Section */}
-        <section className="py-16 bg-gradient-to-br from-skillswap-primary/10 to-skillswap-light/30">
+        {/* CTA Section with improved styling */}
+        <section className="py-16 bg-gradient-to-br from-skillswap-primary/5 via-skillswap-light/20 to-white">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl font-bold text-skillswap-dark mb-4">Ready to Start Learning and Teaching?</h2>
-            <p className="text-skillswap-neutral max-w-2xl mx-auto mb-8">
+            <p className="text-skillswap-neutral text-lg max-w-2xl mx-auto mb-8">
               Join our community of learners and teachers today. Share your skills and discover new ones.
             </p>
-            <Button size="lg" className="bg-skillswap-primary hover:bg-skillswap-secondary" asChild>
+            <Button 
+              size="lg" 
+              className="bg-skillswap-primary hover:bg-skillswap-secondary text-white font-semibold px-8 py-6 text-lg transition-all transform hover:scale-105" 
+              asChild
+            >
               <Link to="/signup">Join SkillSwap</Link>
             </Button>
           </div>
