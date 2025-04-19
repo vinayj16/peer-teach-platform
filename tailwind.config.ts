@@ -28,6 +28,15 @@ export default {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
 				},
+				// SkillSwap custom colors
+				skillswap: {
+					primary: '#9b87f5',
+					secondary: '#7E69AB',
+					dark: '#1A1F2C',
+					light: '#E5DEFF',
+					neutral: '#8E9196',
+					accent: '#1EAEDB',
+				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
 					foreground: 'hsl(var(--secondary-foreground))'
