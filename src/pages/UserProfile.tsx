@@ -14,6 +14,10 @@ const UserProfile = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const user = users.find(u => u.id === id) || users[0];
+  
+  // Add mock email and phone for demo purposes
+  const userEmail = `${user.name.toLowerCase().replace(/\s+/g, '.')}@example.com`;
+  const userPhone = "+1 (555) 123-4567";
 
   const handleMessage = () => {
     toast.success("Message request sent to " + user.name);
@@ -27,12 +31,12 @@ const UserProfile = () => {
 
   const handleEmail = () => {
     toast.success("Opening email composer");
-    window.location.href = `mailto:${user.email}`;
+    window.location.href = `mailto:${userEmail}`;
   };
 
   const handlePhone = () => {
     toast.success("Opening phone dialer");
-    window.location.href = `tel:${user.phone}`;
+    window.location.href = `tel:${userPhone}`;
   };
 
   return (
