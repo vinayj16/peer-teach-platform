@@ -30,10 +30,16 @@ const Login = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      // Store the logged-in user's name for demo (in real world, fetch from backend)
-      window.localStorage.setItem("skillswap_user", JSON.stringify({
-        name: "Alex Johnson"
-      }));
+      // Store the actual user's email in localStorage (using the part before '@' as 'username')
+      const email = values.email;
+      const username = email.split("@")[0];
+      window.localStorage.setItem(
+        "skillswap_user",
+        JSON.stringify({
+          name: username,
+          email: email,
+        })
+      );
       toast.success("Login successful!");
       navigate("/");
     } catch (error) {
@@ -50,7 +56,6 @@ const Login = () => {
             <h1 className="text-2xl font-bold">Welcome back</h1>
             <p className="text-gray-500">Enter your credentials to access your account</p>
           </div>
-
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
               <FormField
@@ -69,7 +74,6 @@ const Login = () => {
                   </FormItem>
                 )}
               />
-
               <FormField
                 control={form.control}
                 name="password"
@@ -100,13 +104,11 @@ const Login = () => {
                   </FormItem>
                 )}
               />
-
               <Button type="submit" className="w-full">
                 Sign In
               </Button>
             </form>
           </Form>
-
           <div className="space-y-2 text-center text-sm">
             <p className="text-gray-500">
               Don't have an account?{" "}
@@ -128,3 +130,4 @@ const Login = () => {
 };
 
 export default Login;
+

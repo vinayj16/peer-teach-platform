@@ -1,3 +1,4 @@
+
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "./button";
 import { 
@@ -11,7 +12,7 @@ import {
 import { useState, useEffect, useRef } from "react";
 
 const Navbar = () => {
-  const [user, setUser] = useState<{ name: string } | null>(null);
+  const [user, setUser] = useState<{ name?: string; email?: string } | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const navigate = useNavigate();
@@ -38,6 +39,13 @@ const Navbar = () => {
     navigate("/");
   };
 
+  // Show username (from login, or email if missing)
+  const getDisplayName = () => {
+    if (user?.name) return user.name;
+    if (user?.email) return user.email.split("@")[0];
+    return "User";
+  };
+
   return (
     <nav className="sticky top-0 z-50 w-full bg-white border-b border-gray-200 shadow-sm">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
@@ -45,7 +53,6 @@ const Navbar = () => {
           <Book className="h-6 w-6 text-skillswap-primary" />
           <span className="text-xl font-bold text-skillswap-dark">SkillSwap</span>
         </Link>
-        
         <div className="hidden md:flex items-center gap-6">
           <Link to="/" className="flex items-center gap-1 text-skillswap-neutral hover:text-skillswap-primary transition-colors">
             <Home className="h-4 w-4" />
@@ -64,7 +71,6 @@ const Navbar = () => {
             <span>Messages</span>
           </Link>
         </div>
-        
         <div className="flex items-center gap-3">
           {!user ? (
             <>
@@ -83,7 +89,7 @@ const Navbar = () => {
                 onClick={() => setMenuOpen((open) => !open)}
               >
                 <User className="h-5 w-5 text-skillswap-primary" />
-                <span className="text-skillswap-dark font-semibold">{user.name}</span>
+                <span className="text-skillswap-dark font-semibold">{getDisplayName()}</span>
               </button>
               {menuOpen && (
                 <div className="absolute right-0 mt-2 w-36 bg-white border border-gray-200 rounded-md shadow-lg z-50 animate-fade-in">
