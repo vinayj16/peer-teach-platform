@@ -30,7 +30,10 @@ const Login = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      // We'll implement this when Supabase is connected
+      // Store the logged-in user's name for demo (in real world, fetch from backend)
+      window.localStorage.setItem("skillswap_user", JSON.stringify({
+        name: "Alex Johnson"
+      }));
       toast.success("Login successful!");
       navigate("/");
     } catch (error) {
