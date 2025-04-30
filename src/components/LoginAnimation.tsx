@@ -16,7 +16,7 @@ const AnimatedShape = () => {
 
   return (
     <mesh ref={mesh} position={[0, 0, 0]}>
-      <torusKnotGeometry args={[1.5, 0.5, 64, 16]} />
+      <torusKnotGeometry args={[1.5, 0.5, 32, 8]} />
       <MeshWobbleMaterial 
         color="#9b87f5" 
         factor={0.4} 
@@ -35,7 +35,12 @@ const LoginAnimation = () => {
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 10, 10]} intensity={1} />
         <AnimatedShape />
-        <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={1} />
+        <OrbitControls 
+          enableZoom={false} 
+          enablePan={false} 
+          autoRotate 
+          autoRotateSpeed={1} 
+        />
       </Canvas>
     </div>
   );

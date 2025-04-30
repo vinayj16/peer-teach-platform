@@ -2,7 +2,6 @@
 import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Float, MeshDistortMaterial, Sphere } from '@react-three/drei';
-import * as THREE from 'three';
 
 interface FloatingBubblesProps {
   count?: number;
@@ -21,8 +20,13 @@ const FloatingBubbles = ({
     <>
       {Array.from({ length: count }).map((_, i) => {
         const randomColor = colors[Math.floor(Math.random() * colors.length)];
-        const randomSize = Math.random() * (scale[1] - scale[0]) + scale[0];
-        const randomSpeed = Math.random() * (1.5 - 0.5) + 0.5 * speed;
+        const randomSize = scale[0] + Math.random() * (scale[1] - scale[0]);
+        const randomSpeed = 0.5 + Math.random() * speed;
+        
+        // Create positions using simple math instead of THREE.MathUtils
+        const posX = (Math.random() - 0.5) * 10;
+        const posY = (Math.random() - 0.5) * 10;
+        const posZ = (Math.random() - 0.5) * 10;
 
         return (
           <Float
@@ -30,13 +34,9 @@ const FloatingBubbles = ({
             speed={randomSpeed}
             rotationIntensity={0.5}
             floatIntensity={2}
-            position={[
-              THREE.MathUtils.randFloatSpread(10),
-              THREE.MathUtils.randFloatSpread(10),
-              THREE.MathUtils.randFloatSpread(10)
-            ]}
+            position={[posX, posY, posZ]}
           >
-            <Sphere args={[randomSize, 16, 16]}>
+            <Sphere args={[randomSize, 8, 8]}>
               <MeshDistortMaterial
                 color={randomColor}
                 speed={0.4}
@@ -59,7 +59,7 @@ const HeroAnimation = () => {
         <ambientLight intensity={0.7} />
         <directionalLight position={[10, 10, 10]} intensity={1} />
         <Suspense fallback={null}>
-          <FloatingBubbles count={15} />
+          <FloatingBubbles count={8} />
         </Suspense>
       </Canvas>
     </div>
