@@ -1,6 +1,6 @@
 
-import { Suspense, useRef } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Suspense } from 'react';
+import { Canvas } from '@react-three/fiber';
 import { Float, MeshDistortMaterial, Sphere } from '@react-three/drei';
 import * as THREE from 'three';
 
@@ -21,8 +21,8 @@ const FloatingBubbles = ({
     <>
       {Array.from({ length: count }).map((_, i) => {
         const randomColor = colors[Math.floor(Math.random() * colors.length)];
-        const randomSize = THREE.MathUtils.randFloat(scale[0], scale[1]);
-        const randomSpeed = THREE.MathUtils.randFloat(0.5, 1.5) * speed;
+        const randomSize = Math.random() * (scale[1] - scale[0]) + scale[0];
+        const randomSpeed = Math.random() * (1.5 - 0.5) + 0.5 * speed;
 
         return (
           <Float
@@ -36,7 +36,7 @@ const FloatingBubbles = ({
               THREE.MathUtils.randFloatSpread(10)
             ]}
           >
-            <Sphere args={[randomSize, 32, 32]}>
+            <Sphere args={[randomSize, 16, 16]}>
               <MeshDistortMaterial
                 color={randomColor}
                 speed={0.4}

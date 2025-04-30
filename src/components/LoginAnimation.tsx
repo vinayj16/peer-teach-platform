@@ -16,7 +16,7 @@ const AnimatedShape = () => {
 
   return (
     <mesh ref={mesh} position={[0, 0, 0]}>
-      <torusKnotGeometry args={[1.5, 0.5, 128, 32]} />
+      <torusKnotGeometry args={[1.5, 0.5, 64, 16]} />
       <MeshWobbleMaterial 
         color="#9b87f5" 
         factor={0.4} 
