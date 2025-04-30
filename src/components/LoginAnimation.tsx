@@ -51,8 +51,8 @@ const LoginAnimation = () => {
         })}
       </div>
 
-      {/* Additional style definitions for animations */}
-      <style jsx>{`
+      <style>
+        {`
         @keyframes morph {
           0% {
             border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
@@ -108,7 +108,8 @@ const LoginAnimation = () => {
             transform: translateY(-20px);
           }
         }
-      `}</style>
+        `}
+      </style>
     </div>
   );
 };

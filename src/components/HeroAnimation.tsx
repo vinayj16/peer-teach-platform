@@ -11,25 +11,19 @@ const HeroAnimation = () => {
             key={i}
             className="bubble"
             style={{
-              '--size': `${30 + Math.random() * 60}px`,
-              '--left': `${Math.random() * 100}%`,
-              '--top': `${Math.random() * 100}%`,
-              '--duration': `${5 + Math.random() * 10}s`,
-              '--delay': `${Math.random() * 5}s`,
-              '--color': [
-                '#9b87f5', '#7E69AB', '#E5DEFF', '#1EAEDB', 
-                'rgba(155, 135, 245, 0.5)', 'rgba(229, 222, 255, 0.6)'
-              ][Math.floor(Math.random() * 6)],
               position: 'absolute',
               borderRadius: '50%',
               opacity: 0.7,
-              width: 'var(--size)',
-              height: 'var(--size)',
-              left: 'var(--left)',
-              top: 'var(--top)',
-              backgroundColor: 'var(--color)',
-              animation: 'float var(--duration) ease-in-out infinite',
-              animationDelay: 'var(--delay)',
+              width: `${30 + Math.random() * 60}px`,
+              height: `${30 + Math.random() * 60}px`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              backgroundColor: [
+                '#9b87f5', '#7E69AB', '#E5DEFF', '#1EAEDB', 
+                'rgba(155, 135, 245, 0.5)', 'rgba(229, 222, 255, 0.6)'
+              ][Math.floor(Math.random() * 6)],
+              animation: `float ${5 + Math.random() * 10}s ease-in-out infinite`,
+              animationDelay: `${Math.random() * 5}s`,
               boxShadow: '0 0 10px rgba(255, 255, 255, 0.3)',
               filter: 'blur(2px)'
             }}
