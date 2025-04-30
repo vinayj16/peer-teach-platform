@@ -1,25 +1,28 @@
 
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import HeroAnimation from "./HeroAnimation";
 
 const HeroSection = () => {
   return (
-    <div className="relative overflow-hidden bg-gradient-to-br from-white via-skillswap-light/20 to-skillswap-primary/5 py-20 md:py-28">
-      <div className="container mx-auto px-4">
+    <div className="relative overflow-hidden bg-gradient-to-br from-indigo-50 via-purple-50 to-indigo-100 py-20 md:py-28">
+      <HeroAnimation />
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8 max-w-xl">
-            <h1 className="text-5xl md:text-6xl font-bold text-skillswap-dark leading-tight">
-              <span className="text-skillswap-primary">Swap Skills,</span>
+            <h1 className="text-5xl md:text-6xl font-bold leading-tight">
+              <span className="text-gradient">Swap Skills,</span>
               <br />
-              Grow Together
+              <span className="text-indigo-900">Grow Together</span>
             </h1>
-            <p className="text-xl text-skillswap-neutral leading-relaxed">
+            <p className="text-xl text-indigo-700 leading-relaxed">
               Trade your expertise for knowledge you seek. SkillSwap connects people who want to teach what they know and learn what they don't.
             </p>
             <div className="flex flex-wrap gap-4">
               <Button 
                 size="lg" 
-                className="bg-skillswap-primary hover:bg-skillswap-secondary text-white px-8 py-6 text-lg font-semibold transition-all transform hover:scale-105" 
+                className="bg-gradient-to-r from-skillswap-primary to-indigo-600 hover:from-indigo-600 hover:to-skillswap-primary text-white px-8 py-6 text-lg font-semibold transition-all transform hover:scale-105 shadow-lg" 
                 asChild
               >
                 <Link to="/signup">Get Started</Link>
@@ -27,19 +30,19 @@ const HeroSection = () => {
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-2 border-skillswap-primary text-skillswap-primary hover:bg-skillswap-light px-8 py-6 text-lg font-semibold transition-all" 
+                className="border-2 border-skillswap-primary text-skillswap-primary hover:bg-skillswap-light px-8 py-6 text-lg font-semibold transition-all backdrop-blur-sm shadow-md" 
                 asChild
               >
                 <Link to="/discover">Explore Skills</Link>
               </Button>
             </div>
-            <div className="text-base text-skillswap-neutral pt-4">
-              Already teaching or learning? <Link to="/login" className="text-skillswap-primary hover:text-skillswap-secondary hover:underline font-semibold">Log in</Link>
+            <div className="text-base text-indigo-700 pt-4">
+              Already teaching or learning? <Link to="/login" className="text-skillswap-primary hover:text-indigo-900 hover:underline font-semibold">Log in</Link>
             </div>
           </div>
           
           <div className="relative hidden lg:block">
-            <div className="relative z-10 rounded-2xl shadow-xl overflow-hidden transform hover:scale-102 transition-transform duration-300">
+            <div className="relative z-10 rounded-2xl shadow-xl overflow-hidden transform hover:scale-102 transition-transform duration-300 glass-card">
               <img 
                 src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" 
                 alt="People learning together" 

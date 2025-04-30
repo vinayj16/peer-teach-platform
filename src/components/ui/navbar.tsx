@@ -47,26 +47,26 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 w-full bg-white border-b border-gray-200 shadow-sm">
+    <nav className="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md border-b border-indigo-100 shadow-sm">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <Link to="/" className="flex items-center gap-2">
-          <Book className="h-6 w-6 text-skillswap-primary" />
-          <span className="text-xl font-bold text-skillswap-dark">SkillSwap</span>
+        <Link to="/" className="flex items-center gap-2 group">
+          <Book className="h-6 w-6 text-skillswap-primary group-hover:text-indigo-800 transition-colors" />
+          <span className="text-xl font-bold text-indigo-900 group-hover:text-skillswap-primary transition-colors">SkillSwap</span>
         </Link>
         <div className="hidden md:flex items-center gap-6">
-          <Link to="/" className="flex items-center gap-1 text-skillswap-neutral hover:text-skillswap-primary transition-colors">
+          <Link to="/" className="flex items-center gap-1 text-indigo-700 hover:text-skillswap-primary transition-colors">
             <Home className="h-4 w-4" />
             <span>Home</span>
           </Link>
-          <Link to="/discover" className="flex items-center gap-1 text-skillswap-neutral hover:text-skillswap-primary transition-colors">
+          <Link to="/discover" className="flex items-center gap-1 text-indigo-700 hover:text-skillswap-primary transition-colors">
             <Search className="h-4 w-4" />
             <span>Discover</span>
           </Link>
-          <Link to="/bookings" className="flex items-center gap-1 text-skillswap-neutral hover:text-skillswap-primary transition-colors">
+          <Link to="/bookings" className="flex items-center gap-1 text-indigo-700 hover:text-skillswap-primary transition-colors">
             <CalendarCheck className="h-4 w-4" />
             <span>Bookings</span>
           </Link>
-          <Link to="/messages" className="flex items-center gap-1 text-skillswap-neutral hover:text-skillswap-primary transition-colors">
+          <Link to="/messages" className="flex items-center gap-1 text-indigo-700 hover:text-skillswap-primary transition-colors">
             <MessageSquare className="h-4 w-4" />
             <span>Messages</span>
           </Link>
@@ -74,10 +74,10 @@ const Navbar = () => {
         <div className="flex items-center gap-3">
           {!user ? (
             <>
-              <Button variant="ghost" size="sm" asChild>
+              <Button variant="ghost" size="sm" className="text-indigo-700 hover:bg-indigo-100" asChild>
                 <Link to="/login">Log in</Link>
               </Button>
-              <Button size="sm" className="bg-skillswap-primary hover:bg-skillswap-secondary" asChild>
+              <Button size="sm" className="bg-gradient-to-r from-skillswap-primary to-indigo-600 hover:from-indigo-600 hover:to-skillswap-primary transition-all duration-300 border-none" asChild>
                 <Link to="/signup">Sign up</Link>
               </Button>
             </>
@@ -85,23 +85,23 @@ const Navbar = () => {
             <div className="relative" ref={dropdownRef}>
               <button
                 type="button"
-                className="flex items-center gap-2 px-3 py-2 rounded-md bg-skillswap-primary/10 hover:bg-skillswap-primary/20 transition-all focus:outline-none"
+                className="flex items-center gap-2 px-3 py-2 rounded-md bg-indigo-100 hover:bg-indigo-200 transition-all focus:outline-none"
                 onClick={() => setMenuOpen((open) => !open)}
               >
                 <User className="h-5 w-5 text-skillswap-primary" />
-                <span className="text-skillswap-dark font-semibold">{getDisplayName()}</span>
+                <span className="text-indigo-900 font-semibold">{getDisplayName()}</span>
               </button>
               {menuOpen && (
-                <div className="absolute right-0 mt-2 w-36 bg-white border border-gray-200 rounded-md shadow-lg z-50 animate-fade-in">
+                <div className="absolute right-0 mt-2 w-36 bg-white border border-indigo-100 rounded-md shadow-lg z-50 animate-fade-in">
                   <button
                     onClick={() => { navigate(`/profile/1`); setMenuOpen(false); }}
-                    className="w-full text-left px-4 py-2 text-skillswap-neutral hover:bg-skillswap-primary/10 rounded-t"
+                    className="w-full text-left px-4 py-2 text-indigo-700 hover:bg-indigo-50 rounded-t"
                   >
                     View Profile
                   </button>
                   <button
                     onClick={handleLogout}
-                    className="w-full text-left px-4 py-2 text-red-500 hover:bg-skillswap-primary/10 rounded-b"
+                    className="w-full text-left px-4 py-2 text-pink-600 hover:bg-indigo-50 rounded-b"
                   >
                     Logout
                   </button>
@@ -109,7 +109,7 @@ const Navbar = () => {
               )}
             </div>
           )}
-          <Button variant="ghost" size="icon" className="md:hidden">
+          <Button variant="ghost" size="icon" className="md:hidden text-indigo-700 hover:bg-indigo-100">
             <span className="sr-only">Open menu</span>
             <User className="h-5 w-5" />
           </Button>
