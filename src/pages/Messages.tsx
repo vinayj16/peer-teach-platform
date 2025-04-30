@@ -52,7 +52,7 @@ const Messages = () => {
       toast({
         title: "Session started",
         description: "You've successfully joined the video session",
-        variant: "success",
+        // Fix: Remove the 'variant: "success"' as it's not a valid variant
       });
     }, 1500);
   };

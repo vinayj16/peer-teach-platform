@@ -11,7 +11,7 @@ const Help = () => {
       <main className="flex-grow container mx-auto px-4 py-12">
         <h1 className="text-4xl font-bold text-skillswap-dark mb-8 text-center">Help Center</h1>
         <div className="max-w-3xl mx-auto">
-          <Card className="p-6 shadow-md">
+          <Card className="p-6 shadow-md bg-white">
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="account" className="border-b border-indigo-100">
                 <AccordionTrigger className="text-lg font-medium text-skillswap-dark py-4 hover:text-skillswap-primary">

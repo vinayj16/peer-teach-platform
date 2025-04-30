@@ -49,7 +49,7 @@ const Bookings = () => {
     });
     
     return (
-      <Card key={booking.id} className="mb-4">
+      <Card key={booking.id} className="mb-4 bg-white">
         <CardContent className="p-6">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div className="flex items-center space-x-4">
@@ -113,7 +113,7 @@ const Bookings = () => {
   };
   
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-white">
       <Navbar />
       
       <main className="flex-grow py-8">
@@ -126,8 +126,8 @@ const Bookings = () => {
               </p>
             </div>
             
-            <Tabs defaultValue="learning">
-              <TabsList className="mb-6">
+            <Tabs defaultValue="learning" className="bg-white rounded-md">
+              <TabsList className="mb-6 bg-gray-100">
                 <TabsTrigger value="learning">Learning Sessions</TabsTrigger>
                 <TabsTrigger value="teaching">Teaching Sessions</TabsTrigger>
               </TabsList>
