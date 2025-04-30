@@ -1,67 +1,47 @@
 
-import { Suspense } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { Float, MeshDistortMaterial, Sphere } from '@react-three/drei';
+import React from 'react';
 
-interface FloatingBubblesProps {
-  count?: number;
-  colors?: string[];
-  speed?: number;
-  scale?: [number, number];
-}
-
-const FloatingBubbles = ({ 
-  count = 10, 
-  colors = ['#9b87f5', '#7E69AB', '#E5DEFF', '#1EAEDB'], 
-  speed = 1,
-  scale = [0.5, 1]
-}: FloatingBubblesProps) => {
-  return (
-    <>
-      {Array.from({ length: count }).map((_, i) => {
-        const randomColor = colors[Math.floor(Math.random() * colors.length)];
-        const randomSize = scale[0] + Math.random() * (scale[1] - scale[0]);
-        const randomSpeed = 0.5 + Math.random() * speed;
-        
-        // Create positions using simple math instead of THREE.MathUtils
-        const posX = (Math.random() - 0.5) * 10;
-        const posY = (Math.random() - 0.5) * 10;
-        const posZ = (Math.random() - 0.5) * 10;
-
-        return (
-          <Float
-            key={i}
-            speed={randomSpeed}
-            rotationIntensity={0.5}
-            floatIntensity={2}
-            position={[posX, posY, posZ]}
-          >
-            <Sphere args={[randomSize, 8, 8]}>
-              <MeshDistortMaterial
-                color={randomColor}
-                speed={0.4}
-                distort={0.3}
-                opacity={0.7}
-                transparent
-              />
-            </Sphere>
-          </Float>
-        );
-      })}
-    </>
-  );
-};
-
+// A simpler, pure CSS-based animation as fallback for Three.js
 const HeroAnimation = () => {
   return (
-    <div className="absolute inset-0 -z-10">
-      <Canvas camera={{ position: [0, 0, 20], fov: 75 }}>
-        <ambientLight intensity={0.7} />
-        <directionalLight position={[10, 10, 10]} intensity={1} />
-        <Suspense fallback={null}>
-          <FloatingBubbles count={8} />
-        </Suspense>
-      </Canvas>
+    <div className="absolute inset-0 -z-10 overflow-hidden">
+      <div className="animation-container">
+        {Array.from({ length: 15 }).map((_, i) => (
+          <div 
+            key={i}
+            className="bubble"
+            style={{
+              '--size': `${30 + Math.random() * 60}px`,
+              '--left': `${Math.random() * 100}%`,
+              '--top': `${Math.random() * 100}%`,
+              '--duration': `${5 + Math.random() * 10}s`,
+              '--delay': `${Math.random() * 5}s`,
+              '--color': [
+                '#9b87f5', '#7E69AB', '#E5DEFF', '#1EAEDB', 
+                'rgba(155, 135, 245, 0.5)', 'rgba(229, 222, 255, 0.6)'
+              ][Math.floor(Math.random() * 6)],
+              position: 'absolute',
+              borderRadius: '50%',
+              opacity: 0.7,
+              width: 'var(--size)',
+              height: 'var(--size)',
+              left: 'var(--left)',
+              top: 'var(--top)',
+              backgroundColor: 'var(--color)',
+              animation: 'float var(--duration) ease-in-out infinite',
+              animationDelay: 'var(--delay)',
+              boxShadow: '0 0 10px rgba(255, 255, 255, 0.3)',
+              filter: 'blur(2px)'
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Add a gradient background for additional visual effect */}
+      <div 
+        className="absolute inset-0 bg-gradient-radial from-indigo-100/20 to-transparent" 
+        style={{ mixBlendMode: 'overlay' }}
+      />
     </div>
   );
 };

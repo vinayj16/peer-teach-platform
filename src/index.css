@@ -112,6 +112,10 @@
   .text-gradient {
     @apply bg-gradient-to-r from-skillswap-primary to-indigo-600 bg-clip-text text-transparent;
   }
+
+  .bg-gradient-radial {
+    background-image: radial-gradient(var(--tw-gradient-stops));
+  }
 }
 
 @keyframes float {
@@ -146,6 +150,25 @@
   }
 }
 
+/* New animations for the login and hero components */
+@keyframes morph {
+  0% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; }
+  25% { border-radius: 62% 38% 47% 53% / 45% 58% 42% 55%; }
+  50% { border-radius: 43% 57% 51% 49% / 58% 43% 57% 42%; }
+  75% { border-radius: 40% 60% 43% 57% / 52% 32% 68% 48%; }
+  100% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; }
+}
+
+@keyframes spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(180px) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(180px) rotate(-360deg); }
+}
+
 #root {
   max-width: 100%;
   margin: 0 auto;
@@ -164,4 +187,13 @@
 /* Glass card effect */
 .glass-card {
   @apply bg-white/80 backdrop-blur-sm border border-white/20;
+}
+
+/* Animation container styles */
+.animation-container, 
+.login-animation-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
