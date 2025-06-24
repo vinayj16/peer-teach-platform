@@ -60,8 +60,6 @@
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^0.9.3",
     "zod": "^3.23.8",
-
-    // React Three ecosystem compatible with React 18
     "@react-three/fiber": "^8.13.5",
     "@react-three/drei": "^9.0.0",
     "@react-spring/three": "^9.4.0"
