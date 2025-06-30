@@ -141,8 +141,8 @@ This project is licensed under the [MIT License](LICENSE)
 ## 🙋 Contact
 
 * GitHub: [@vinayj16](https://github.com/vinayj16)
-* Email: [your.email@example.com](vinays15201718@gmail.com)
-* LinkedIn: [YourProfile](www.linkedin.com/in/vinay-p-265246298)
+* Email: (vinays15201718@gmail.com)
+* LinkedIn: (www.linkedin.com/in/vinay-p-265246298)
 
 ---
 
